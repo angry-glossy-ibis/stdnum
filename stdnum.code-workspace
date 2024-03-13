@@ -1,0 +1,48 @@
+{
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "editorconfig.editorconfig",
+      "redhat.vscode-yaml"
+    ]
+  },
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.autoIndent": "full",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "never"
+    },
+    "editor.detectIndentation": false,
+    "editor.fontFamily": "monospace",
+    "editor.formatOnSave": true,
+    "editor.mouseWheelZoom": true,
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [
+      80
+    ],
+    "editor.wordWrap": "on",
+    "editorconfig.generateAuto": false,
+    "eslint.execArgv": [
+      "--max_old_space_size=2048"
+    ],
+    "eslint.experimental.useFlatConfig": true,
+    "eslint.runtime": "node",
+    "eslint.validate": [
+      "markdown"
+    ],
+    "files.insertFinalNewline": true,
+    "html.format.extraLiners": "",
+    "html.format.wrapAttributes": "force-aligned",
+    "javascript.preferences.importModuleSpecifierEnding": "js",
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.importModuleSpecifierEnding": "js",
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.tsdk": "./node_modules/typescript/lib/",
+    "yaml.format.singleQuote": true
+  }
+}

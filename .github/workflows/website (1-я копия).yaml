@@ -1,0 +1,38 @@
+### GitHub -> Repository settings -> Pages.
+### https://github.com/actions/starter-workflows/blob/main/pages/nextjs.yml
+# https://nextjs.org/docs/pages/building-your-application/deploying/ci-build-caching
+
+
+name: Deploy the Next.js app to GitHub Pages
+
+jobs:
+  build:
+    # permissions:
+    #   contents: read
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Setup Pages
+      
+      # - name: Restore cache
+      #   uses: actions/cache@v4
+      #   with:
+      #     key: ${{ runner.os }}-next-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('web-app/next.config.js', 'web-app/src/**/*.css', 'web-app/src/**/*.tsx') }}
+      #     ##### package-lock.json????!!!!!!!!!!!!!!!!!!
+      #     path: .next/cache/
+      #     restore-keys: ${{ runner.os }}-next-${{ hashFiles('**/package-lock.json') }}-
+      #     #### package-lock.json????!!!!!!!!!!!!!!!!!!
+      
+      #- name: Install dependencies
+      
+      
+      
+uses: actions/cache@v4
+with:
+  path: |
+    ~/.npm
+    ${{ github.workspace }}/.next/cache
+  # Generate a new cache whenever packages or source files change.
+  key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+  # If source files changed but packages didn't, rebuild from a prior cache.
+  restore-keys: |
+    ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-

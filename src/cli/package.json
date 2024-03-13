@@ -1,0 +1,36 @@
+{
+  "name": "@stdnum/cli",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [
+    "ISBN"
+  ],
+  "homepage": "https://github.com/stdnum/stdnum/",
+  "bugs": {
+    "url": "https://github.com/stdnum/stdnum/issues/"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Sergei Karavaev",
+    "url": "https://github.com/edukisto/"
+  },
+  "files": [],
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stdnum/stdnum.git"
+  },
+  "scripts": {},
+  "dependencies": {
+    "commander": "^12.0.0"
+  },
+  "devDependencies": {
+    "@commander-js/extra-typings": "^12.0.1"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "type": "module"
+}

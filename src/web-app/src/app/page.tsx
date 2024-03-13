@@ -13,7 +13,7 @@ import {
   Switch,
 } from '@mui/joy';
 import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
-import InfoOutlined from '@mui/icons-material/InfoOutlined';
+// import InfoOutlined from '@mui/icons-material/InfoOutlined';
 import React, { ChangeEvent, useState } from 'react';
 
 function ModeToggle() {
@@ -85,7 +85,7 @@ function Page({
                   startDecorator=''
                 />
                 <FormHelperText>
-                  <InfoOutlined />
+                  {/* <InfoOutlined /> */}
                   10‑ или 13­‑значный идентификатор
                 </FormHelperText>
               </FormControl>
