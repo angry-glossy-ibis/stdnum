@@ -5,6 +5,7 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  basePath: '/stdnum',
   distDir: 'out',
   output: 'export',
   poweredByHeader: false,

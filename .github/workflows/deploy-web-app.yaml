@@ -48,8 +48,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     environment:
-      # On GitHub, make `main` the default branch.
-      # On GitHub, allow only the default branch to deploy to this environment.
+      # On GitHub, limit which branches can deploy to this environment.
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
