@@ -34,7 +34,7 @@ jobs:
         with:
           key: |
             ${{ runner.os }}-next-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/web-app/next.config.js', 'src/web-app/src/app/*.css', 'src/web-app/src/app/*.tsx') }}
-          path: .next/cache/
+          path: ./src/web-app/.next/cache/
           restore-keys: |
             ${{ runner.os }}-next-${{ hashFiles('package-lock.json') }}-
       - name: Install dependencies
