@@ -1,0 +1,14 @@
+*
+
+!/*.js
+!/*.json
+!/.gitignore
+
+!public/
+!public/**/
+!public/**/.nojekyll
+
+!src/
+!src/**/
+!src/**/*.css
+!src/**/*.tsx

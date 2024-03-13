@@ -1,0 +1,57 @@
+name: Deploy the Next.js app to GitHub Pages
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/web-app/**
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # See `distDir` in `next.config.js`.
+      BUILD_PATH: ./out/
+    steps:
+      - name: Checks out the repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version: '20.11'
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        with:
+          # Injects `basePath` into `next.config.js`.
+          static_site_generator: next
+      - name: Install dependencies
+        run: npm ci
+      - name: Build the web app with Next.js
+        run: npx --no next build
+      - name: Set file-system permissions
+        run: |
+          find "${BUILD_PATH}" -type d -exec chmod 0755 {} \;
+          find "${BUILD_PATH}" -type f -exec chmod 0644 {} \;
+      - name: Pack and upload the artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: ${{ env.BUILD_PATH }}
+  deploy:
+    permissions:
+      id-token: write
+      pages: write
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      # On GitHub, make `main` the default branch.
+      # On GitHub, allow only the default branch to deploy to this environment.
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

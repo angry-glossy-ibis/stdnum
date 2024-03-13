@@ -1,0 +1,44 @@
+{
+  "name": "@stdnum/web-app",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/stdnum/stdnum/",
+  "bugs": {
+    "url": "https://github.com/stdnum/stdnum/issues/"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Sergei Karavaev",
+    "url": "https://github.com/edukisto/"
+  },
+  "files": [],
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stdnum/stdnum.git"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/joy": "^5.0.0-beta.30",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "next": "^14.1.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "private": true,
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "type": "module"
+}
