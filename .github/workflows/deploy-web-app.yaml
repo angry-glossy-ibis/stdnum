@@ -30,6 +30,8 @@ jobs:
           static_site_generator: next
       - name: Install dependencies
         run: npm ci
+      - name: Change directory
+        run: cd ./src/web-app/
       - name: Build the web app with Next.js
         run: npx --no next build
       - name: Set file-system permissions
