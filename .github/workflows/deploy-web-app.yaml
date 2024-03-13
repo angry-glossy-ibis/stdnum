@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # See `distDir` in `next.config.js`.
-      BUILD_PATH: ./out/
+      BUILD_PATH: ./src/web-app/out/
     steps:
       - name: Checks out the repository
         uses: actions/checkout@v4
@@ -30,10 +30,8 @@ jobs:
           static_site_generator: next
       - name: Install dependencies
         run: npm ci
-      - name: Change directory
-        run: cd ./src/web-app/
       - name: Build the web app with Next.js
-        run: npx --no next build
+        run: npm run build --workspace=./src/web-app/
       - name: Set file-system permissions
         run: |
           find "${BUILD_PATH}" -type d -exec chmod 0755 {} \;
