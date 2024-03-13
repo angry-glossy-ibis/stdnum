@@ -1,4 +1,6 @@
 name: Deploy the Next.js app to GitHub Pages
+# https://github.com/actions/starter-workflows/blob/main/pages/nextjs.yml
+# https://nextjs.org/docs/pages/building-your-application/deploying/ci-build-caching
 on:
   push:
     branches:
@@ -26,8 +28,15 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
-          # Injects `basePath` into `next.config.js`.
           static_site_generator: next
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          key: |
+            ${{ runner.os }}-next-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/web-app/next.config.js', 'src/web-app/src/app/*.css', 'src/web-app/src/app/*.tsx') }}
+          path: .next/cache/
+          restore-keys: |
+            ${{ runner.os }}-next-${{ hashFiles('package-lock.json') }}-
       - name: Install dependencies
         run: npm ci
       - name: Build the web app with Next.js
