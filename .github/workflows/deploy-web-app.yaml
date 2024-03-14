@@ -1,6 +1,6 @@
+# See <https://github.com/actions/starter-workflows/blob/main/pages/nextjs.yml>.
+# See <https://nextjs.org/docs/pages/building-your-application/deploying/ci-build-caching>.
 name: Deploy the Next.js app to GitHub Pages
-# https://github.com/actions/starter-workflows/blob/main/pages/nextjs.yml
-# https://nextjs.org/docs/pages/building-your-application/deploying/ci-build-caching
 on:
   push:
     branches:
@@ -15,8 +15,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      APP_PATH: src/web-app
       # See `distDir` in `next.config.js`.
-      BUILD_PATH: ./src/web-app/out/
+      BUILD_DIR: out
     steps:
       - name: Checks out the repository
         uses: actions/checkout@v4
@@ -33,23 +34,23 @@ jobs:
         uses: actions/cache@v4
         with:
           key: |
-            ${{ runner.os }}-next-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/web-app/next.config.js', 'src/web-app/src/app/*.css', 'src/web-app/src/app/*.tsx') }}
-          path: ./src/web-app/.next/cache/
+            ${{ runner.os }}-next-${{ hashFiles('package-lock.json') }}-${{ hashFiles('${{ env.APP_PATH }}/next.config.js', '${{ env.APP_PATH }}/src/**/*.css', '${{ env.APP_PATH }}/src/**/*.tsx') }}
+          path: ${{ env.APP_PATH }}/.next/cache/
           restore-keys: |
             ${{ runner.os }}-next-${{ hashFiles('package-lock.json') }}-
       - name: Install dependencies
         run: npm ci
       - name: Build the web app with Next.js
-        run: npm run build --workspace=./src/web-app/
+        run: npm run build --workspace="${APP_PATH}"
       - name: Set file-system permissions
         run: |
-          find "${BUILD_PATH}" -type d -exec chmod 0755 {} \;
-          find "${BUILD_PATH}" -type f -exec chmod 0644 {} \;
+          find "${APP_PATH}/${BUILD_DIR}/" -type d -exec chmod 0755 {} \;
+          find "${APP_PATH}/${BUILD_DIR}/" -type f -exec chmod 0644 {} \;
       - name: Pack and upload the artifact
         uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
-          path: ${{ env.BUILD_PATH }}
+          path: ${{ env.APP_PATH }}/${{ env.BUILD_DIR }}/
   deploy:
     permissions:
       id-token: write

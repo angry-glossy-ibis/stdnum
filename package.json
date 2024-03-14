@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "tsc --build --verbose",
-    "##########################": "npm i --save-dev --workspace=./src/cli/ @commander-js/extra-typings",
+    "##########################": "npm i --save-dev --workspace=src/cli @commander-js/extra-typings",
     "lint": "eslint .",
     "test1": "npm test --workspaces",
     "test": "jest --coverage --no-cache"
@@ -43,10 +43,10 @@
     "provenance": true
   },
   "workspaces": [
-    "./src/cli/",
-    "./src/isbn/",
-    "./src/isbn-ranges/",
-    "./src/web-app/"
+    "src/cli",
+    "src/isbn",
+    "src/isbn-ranges",
+    "src/web-app"
   ],
   "type": "module"
 }
