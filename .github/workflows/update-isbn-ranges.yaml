@@ -60,8 +60,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B bugfix/update-isbn-ranges
           git commit -am "fix(isbn-ranges): update ISBN ranges"
-          git pull origin bugfix/update-isbn-ranges
-          git push -u origin main
+          git pull origin main
+          git push -u origin bugfix/update-isbn-ranges
           gh pr create --base=main --fill
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
