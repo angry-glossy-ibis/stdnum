@@ -61,7 +61,7 @@ jobs:
           git checkout -B bugfix/update-isbn-ranges
           git commit -am "fix(isbn-ranges): update ISBN ranges"
           git pull origin bugfix/update-isbn-ranges
-          git push -u origin bugfix/update-isbn-ranges
+          git push -u origin main
           gh pr create --base=main --fill
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
