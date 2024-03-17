@@ -27,8 +27,7 @@ jobs:
       - name: FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         run: |
           echo "Azaza" >> "src/isbn-ranges/src/isbn-ranges.json"
-          if [[ $(git status --porcelain) ]]; then
-          else
+          if [[ -z $(git status --porcelain) ]]; then
             exit 1
           fi
 
@@ -47,7 +46,7 @@ jobs:
       #     unlink "${XML_PATH}"
       #   env:
       #     ISBN_URL: https://www.isbn-international.org/export_rangemessage.xml
-      - if: ${{ failure() }}
+      - if: ${{ success() }}
         name: Create a pull request
         # See <https://www.conventionalcommits.org/>.
         # git config user.name "github-actions"
