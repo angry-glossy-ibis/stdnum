@@ -38,8 +38,8 @@ jobs:
           unlink "${XML_PATH}"
         env:
           ISBN_URL: https://www.isbn-international.org/export_rangemessage.xml
-      - if: git status --porcelain
-        name: Create a pull request
+      - name: Create a pull request
+        if: ${{ git status --porcelain }}
         # See <https://www.conventionalcommits.org/>.
         # git config user.name "github-actions"
         # git config user.email "github-actions@github.com"
