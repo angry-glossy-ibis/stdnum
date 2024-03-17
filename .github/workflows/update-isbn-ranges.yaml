@@ -23,22 +23,31 @@ jobs:
       # Cache?
       - name: Install dependencies
         run: npm ci
-      - name: Get the ISBN range message
+
+      - name: FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         run: |
-          JSON_PATH="$(mktemp "isbn-ranges-XXXXXX.json")"
-          XML_PATH="$(mktemp "isbn-ranges-XXXXXX.xml")"
-          wget -O "${XML_PATH}" "${ISBN_URL}"
+          echo "Azaza" >> "src/isbn-ranges/src/isbn-ranges.json"
+          if [[ $(git status --porcelain) ]]; then
+          else
+            exit 1
+          fi
 
-          npm run build --workspace=src/isbn-ranges-cli
-          npm i
+      # - name: Get the ISBN range message
+      #   run: |
+      #     JSON_PATH="$(mktemp "isbn-ranges-XXXXXX.json")"
+      #     XML_PATH="$(mktemp "isbn-ranges-XXXXXX.xml")"
+      #     wget -O "${XML_PATH}" "${ISBN_URL}"
 
-          npx isbn-ranges-cli convert "${XML_PATH}" "${JSON_PATH}"
-          cp "${JSON_PATH}" "src/isbn-ranges.json"
-          unlink "${JSON_PATH}"
-          unlink "${XML_PATH}"
-        env:
-          ISBN_URL: https://www.isbn-international.org/export_rangemessage.xml
-      - if: $(git status --porcelain)
+      #     npm run build --workspace=src/isbn-ranges-cli
+      #     npm i
+
+      #     npx isbn-ranges-cli convert "${XML_PATH}" "${JSON_PATH}"
+      #     cp "${JSON_PATH}" "src/isbn-ranges/src/isbn-ranges.json"
+      #     unlink "${JSON_PATH}"
+      #     unlink "${XML_PATH}"
+      #   env:
+      #     ISBN_URL: https://www.isbn-international.org/export_rangemessage.xml
+      - if: ${{ failure() }}
         name: Create a pull request
         # See <https://www.conventionalcommits.org/>.
         # git config user.name "github-actions"
