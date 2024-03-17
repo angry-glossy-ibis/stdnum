@@ -1,5 +1,3 @@
-// import { Command, program } from 'commander';
-
 import { Command, Option } from 'commander';
 
 const program = new Command();
@@ -11,13 +9,13 @@ program
   .option('-s, --second <char> [x]', 'second', 'azaza567')
   .showHelpAfterError(true)
   .version('0.1.0')
-  ;
+;
 
 program
   .command('isbn')
-  .action((args) => {
-    console.log(args);
-  })
+  // .action((args) => {
+// console.log(args);
+  // })
   .argument('id', 'an ISBN')
   .addOption(
     new Option('-10, --to-10', 'convert to ISBN-10')
@@ -29,9 +27,9 @@ program
       .conflicts('to10')
     ,
   )
-  ;
+;
 
 program.parse();
 
-const options = program.opts();
-console.log(options);
+// const options = program.opts();
+// console.log(options);

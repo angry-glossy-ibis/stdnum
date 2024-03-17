@@ -19,7 +19,7 @@ jobs:
       # See `distDir` in `next.config.js`.
       BUILD_DIR: out
     steps:
-      - name: Checks out the repository
+      - name: Check out the repository
         uses: actions/checkout@v4
       - name: Setup Node.js
         uses: actions/setup-node@v4

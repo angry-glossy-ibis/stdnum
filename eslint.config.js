@@ -1,24 +1,21 @@
 // @ts-check
 
-import stylistic from '@stylistic/eslint-plugin';
-import tseslint from 'typescript-eslint';
+// import js from '@eslint/js';
+import stylisticPlugin from '@stylistic/eslint-plugin';
+import ts from 'typescript-eslint';
 
-// const config = tseslint.config(
-// js.configs.recommended,
-// tseslint.configs.strictTypeChecked,
-// ...tseslint.configs.stylisticTypeChecked,
-// );
+const stylistic = stylisticPlugin.configs.customize({
+  flat: true,
+  quoteProps: 'as-needed',
+  semi: true,
+});
 
-//  tseslint.config(
-//   ...tseslint.configs.recommended,
+// const ts2 = ts.config(
+//   ts.configs.strictTypeChecked,
+//   ts.configs.stylisticTypeChecked,
 //   {
-//     rules: {
-//       '@typescript-eslint/array-type': 'error',
-//     },
 //   },
 // );
-
-// const ts = tseslint.configs.strictTypeChecked;
 
 //  *  | import('@stylistic/eslint-plugin')}
 //  * import('typescript-eslint').Config}
@@ -32,8 +29,9 @@ const config = [
       '*',
       '!**/*.{js,ts,tsx}',
       '!src/',
-      '**/*.d.ts',
       '**/.next/**',
+      '**/*.d.ts',
+      '**/bin/**',
       '**/coverage/**',
       '**/dist/**',
       '**/out/**',
@@ -41,57 +39,41 @@ const config = [
   },
   {
     files: [
-      '**/*.{js}',
+      '**/*.{js,ts,tsx}',
     ],
-    ...stylistic.configs.customize({
-      flat: true,
-      quoteProps: 'as-needed',
-      semi: true,
-    }),
+    plugins: {
+      ...stylistic.plugins,
+    },
+    rules: {
+      // ...js.configs.recommended.rules,
+      ...stylistic.rules,
+    },
   },
-  // {
-  //   files: [
-  //     '**/*.ts',
-  //   ],
-  //   // ...ts[0],
-  //   languageOptions: {
-  //     ...ts[0].languageOptions,
-  //     parserOptions: {
-  //       ...ts[0].languageOptions?.parserOptions,
-
-  //       /**
-  //        * https://typescript-eslint.io/getting-started/typed-linting/monorepos/
-  //        */
-  //       project: [
-  //         './tsconfig.json',
-  //         './src/*/tsconfig.json',
-  //       ],
-  //       // tsconfigRootDir: import.meta.dirname,
-  //     },
-  //   },
-  //   plugins: {
-  //     ...ts[0].plugins,
-  //   },
-  //   rules: {
-  //     ...ts[1].rules,
-  //     ...ts[2].rules,
-  //   },
-  // },
+  {
+    files: [
+      '**/*.{ts,tsx}',
+    ],
+    languageOptions: {
+      ...ts.configs.base.languageOptions,
+      parserOptions: {
+        /** @see {@link https://typescript-eslint.io/getting-started/typed-linting/monorepos/} */
+        project: [
+          './tsconfig.json',
+          './src/*/tsconfig.json',
+        ],
+        // tsconfigRootDir: import.meta.dirname ?? '.',
+      },
+    },
+    plugins: {
+      ...ts.configs.base.plugins,
+    },
+    rules: {
+      ...ts.configs.strictTypeChecked[1].rules,
+      ...ts.configs.strictTypeChecked[2].rules,
+      ...ts.configs.stylisticTypeChecked[1].rules,
+      ...ts.configs.stylisticTypeChecked[2].rules,
+    },
+  },
 ];
-
-// tseslint.configs.strictTypeChecked.reduce((prev, curr) => {
-//   return { ...prev, ...curr };
-// }, {}),
-
-// console.log(
-//   tseslint.config(
-//     ...tseslint.configs.strictTypeChecked,
-//     {
-
-//     },
-//   ),
-// );
-
-// console.log();
 
 export default config;

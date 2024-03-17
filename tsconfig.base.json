@@ -1,3 +1,59 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig"
+  // "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    //   // "declarationDir": "./dist/types/",
+    // OK. 3
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+    // To use ES6 imports in VS Code.
+    "allowJs": true,
+    // allowArbitraryExtensions,allowImportingTsExtensions,
+    // ,,,paths,,
+    // ,,rootDir,rootDirs,typeRoots,types
+    // OK. 19 - 8 = 11
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    // allowSyntheticDefaultImports,,
+    // ,isolatedModules,preserveSymlinks and verbatimModuleSyntax
+    // ?
+    // "isolatedModules": true,
+    // "verbatimModuleSyntax": true,
+    "composite": true,
+    "declaration": true,
+    // Обдумать
+    // "declaration": true,
+    // "declarationMap": true,
+    "downlevelIteration": true,
+    // "emitDeclarationOnly": false,
+    "newLine": "lf",
+    // "noEmit": false,
+    // "preserveConstEnums": true,
+    "removeComments": true,
+    // "sourceMap": true,
+    // ,,,,,,importHelpers,,,,,,,noEmitHelpers,,,,,,,,
+    // tsBuildInfoFile
+    "target": "ES6",
+    // esModuleInterop for Jest?
+    "esModuleInterop": true,
+    // Для Next.js?
+    "skipLibCheck": true
+  }
+  // Language and Environment
+  // Completeness
+  // Emit: importHelpers,  sourceRoot
+  // Interop Constraints OK, but preserveSymlinks
+  // baseUrl is AMD
+  // skipLibCheck is recommended
+  // "allowSyntheticDefaultImports": false
 }

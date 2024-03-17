@@ -1,5 +1,4 @@
-export type CheckDigit10 =
-  '0' |
+export type CheckDigit10 = '0' |
   '1' |
   '2' |
   '3' |

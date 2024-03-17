@@ -1,0 +1,16 @@
+*
+
+!.gitignore
+!.gitkeep
+
+!/*.js
+!/*.json
+!/*.md
+!/*.ts
+
+!src/
+!src/**/
+!src/**/*.ts
+
+*.d.ts
+node_modules/

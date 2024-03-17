@@ -1,10 +1,14 @@
 - Разделить ISBN в тестах на валидные и невалидные. Убрать комменты справа.
 
 
+Добавить пример использования:
+/media/anonym/OTHER/1Dropbox/Creative/1 ISBN/stdnum/src/isbn-ranges/README.md
+
 #
 
-- убедиться, что Dependabot обновляет все пакеты в монорепе
 - всё-таки ввести ^ в версии
+- может, кеш в `.github/workflows/deploy-web-app.yaml` будет глобальным, а не `next`?
+- `src/web-app/next.config.js` вообще учитывается? или его затирает `static_site_generator`?
 
 ##
 
@@ -29,3 +33,12 @@ edition of ISO 2108 (ISO 2108:2005).
 
     "editor.fontFamily": "monospace",
     "files.insertFinalNewline": true,
+
+Спросить разрешения на использование range messages:
+https://www.isbn-international.org/content/terms-and-conditions/6
+
+
+## Хаки
+
+extends - не массив!
+  "extends": "./src/tsconfig.json",

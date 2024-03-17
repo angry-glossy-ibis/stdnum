@@ -1,4 +1,4 @@
-import { CheckDigit10 } from './types/check-digit-10.js';
+import type { CheckDigit10 } from './types/check-digit-10.js';
 
 /**
  * Calculates the check digit for a 10-digit ISBN.

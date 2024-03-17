@@ -31,7 +31,7 @@ function ModeToggle() {
 
   return (
     <Button
-      variant='outlined'
+      variant="outlined"
       onClick={() => {
         setMode(mode === 'light' ? 'dark' : 'light');
       }}
@@ -44,13 +44,15 @@ function ModeToggle() {
 /**
  * @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/page}
  */
-function Page({
-  params,
-  searchParams,
-}: {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}) {
+function Page(
+  // {
+  //   params,
+  //   searchParams,
+  // }: {
+  //   params: { slug: string };
+  //   searchParams: Record<string, string | string[] | undefined>;
+  // },
+) {
   // const { mode, setMode } = useColorScheme();
 
   const [validate, setValidate] = useState(true);
@@ -73,20 +75,20 @@ function Page({
     <React.Fragment>
       <CssVarsProvider>
         <ModeToggle />
-        <Sheet variant='plain'>
+        <Sheet variant="plain">
 
           <Grid container columns={12} spacing={2}>
             <Grid sm={12} xs={12}>
               <FormControl error>
                 <FormLabel>ISBN</FormLabel>
                 <Input
-                  placeholder=''
+                  placeholder=""
                   required
-                  startDecorator=''
+                  startDecorator=""
                 />
                 <FormHelperText>
                   {/* <InfoOutlined /> */}
-                  10‑ или 13­‑значный идентификатор
+                  10&#x2011; или 13&#xad;&#x2011;значный идентификатор
                 </FormHelperText>
               </FormControl>
             </Grid>
@@ -97,15 +99,15 @@ function Page({
                 <RadioGroup>
                   <Radio
                     checked={format === '10'}
-                    label='10­‑разрядный'
+                    label="10­‑разрядный"
                     onChange={handleFormatChange}
-                    value='10'
+                    value="10"
                   />
                   <Radio
                     checked={format === '13'}
-                    label='13­‑разрядный'
+                    label="13­‑разрядный"
                     onChange={handleFormatChange}
-                    value='13'
+                    value="13"
                   />
                 </RadioGroup>
               </FormControl>
@@ -133,7 +135,7 @@ function Page({
                 // }}
                 checked={validate}
                 endDecorator={validate ? 'Валидировать' : 'Не валидировать'}
-                onChange={(event) => setValidate(event.target.checked)}
+                onChange={(event) => { setValidate(event.target.checked); }}
               // variant='outlined'
               />
             </Grid>
@@ -146,14 +148,15 @@ function Page({
                   >
                     <Radio
                       checked={separator === 'no'}
-                      label='Отсутствует'
+                      label="Отсутствует"
                       onChange={handleSeparatorChange}
                       slotProps={{ input: { 'aria-describedby': 'no' } }}
-                      value='no'
+                      value="no"
                     />
-                    <FormHelperText id='no-separator'>
-                      {/* ISO 2108:1970/1978? */}
-                      <i lang='en'>ISO 2108:1992/2005/2017</i>.
+                    <FormHelperText id="no-separator">
+                      {/* ISO&nbsp;2108:1970/1978? */}
+                      <i lang="en">ISO&nbsp;2108:1992/2005/2017</i>
+                      .
                     </FormHelperText>
                   </FormControl>
 
@@ -162,14 +165,17 @@ function Page({
                   >
                     <Radio
                       checked={format === '10' && separator === 'space'}
-                      label='Пробел (U+0020)'
+                      label="Пробел (U+0020)"
                       onChange={handleSeparatorChange}
                       slotProps={{ input: { 'aria-describedby': 'space-separator' } }}
-                      value='space'
+                      value="space"
                     />
-                    <FormHelperText id='space-separator'>
-                      {/* ISO 2108:1970/1978? */}
-                      <i lang='en'>ISO 2108:1992</i>. Только для <i lang='en'>ISBN‑10</i>.
+                    <FormHelperText id="space-separator">
+                      {/* ISO 2108:1970/1978? */}
+                      <i lang="en">ISO&nbsp;2108:1992</i>
+                      . Только для
+                      <i lang="en">ISBN&#x2011;10</i>
+                      .
                     </FormHelperText>
                   </FormControl>
 
@@ -178,14 +184,18 @@ function Page({
                   >
                     <Radio
                       checked={separator === 'hyphen-minus'}
-                      label='Дефис­‑минус (U+002D)'
+                      label="Дефис­‑минус (U+002D)"
                       onChange={handleSeparatorChange}
                       slotProps={{ input: { 'aria-describedby': 'hyphen-minus-separator' } }}
-                      value='hyphen-minus'
+                      value="hyphen-minus"
                     />
-                    <FormHelperText id='hyphen-minus-separator'>
-                      {/* ISO 2108:1970/1978? */}
-                      <i lang='en'>ISO 2108:1992/2005/2017</i>, ГОСТ 7.53‑86, ГОСТ 7.53‑2001, ГОСТ Р 7.0.53‑2007.
+                    <FormHelperText id="hyphen-minus-separator">
+                      {/* ISO 2108:1970/1978? */}
+                      <i lang="en">ISO&nbsp;2108:1992/2005/2017</i>
+                      ,
+                      ГОСТ&nbsp;7.53&#x2011;86,
+                      ГОСТ&nbsp;7.53&#x2011;2001,
+                      ГОСТ&nbsp;Р&nbsp;7.0.53&#x2011;2007.
                     </FormHelperText>
                   </FormControl>
                 </RadioGroup>
@@ -194,7 +204,7 @@ function Page({
           </Grid>
         </Sheet>
       </CssVarsProvider>
-    </React.Fragment >
+    </React.Fragment>
   );
 }
 

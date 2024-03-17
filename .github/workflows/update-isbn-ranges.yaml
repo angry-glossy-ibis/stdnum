@@ -1,0 +1,57 @@
+name: Update ISBN ranges
+on:
+  # schedule:
+  #   - cron: '30 * * * *'
+  workflow_dispatch:
+jobs:
+  update_isbn_ranges:
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    env:
+      APP_PATH: src/isbn-ranges
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          # Use an LTS version.
+          node-version: '20.11'
+      # Cache?
+      - name: Install dependencies
+        run: npm ci
+      - name: Get the ISBN range message
+        run: |
+          JSON_PATH="$(mktemp "isbn-ranges-XXXXXX.json")"
+          XML_PATH="$(mktemp "isbn-ranges-XXXXXX.xml")"
+          wget -O "${XML_PATH}" "${ISBN_URL}"
+
+          npm run build --workspace=src/isbn-ranges-cli
+          npm i
+
+          npx isbn-ranges-cli convert "${XML_PATH}" "${JSON_PATH}"
+          cp "${JSON_PATH}" "src/isbn-ranges.json"
+          unlink "${JSON_PATH}"
+          unlink "${XML_PATH}"
+        env:
+          ISBN_URL: https://www.isbn-international.org/export_rangemessage.xml
+      - if: ${{ git status --porcelain }}
+        name: Create a pull request
+        # See <https://www.conventionalcommits.org/>.
+        # git config user.name "github-actions"
+        # git config user.email "github-actions@github.com"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B bugfix/update-isbn-ranges
+          git commit -am "fix(isbn-ranges): update ISBN ranges" -S
+          gh pr create --base=main --fill
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+      # - name: Build the package
+      #   run: |
+      #     npm run build --workspace="${APP_PATH}"

@@ -1,4 +1,4 @@
-import { CheckDigit13 } from './types/check-digit-13.js';
+import type { CheckDigit13 } from './types/check-digit-13.js';
 
 /**
  * Calculates the check digit for a 13-digit ISBN.

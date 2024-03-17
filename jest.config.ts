@@ -1,11 +1,11 @@
 import type { JestConfigWithTsJest } from 'ts-jest';
-import { defaultsESM as defaults } from 'ts-jest/presets';
+import { defaultsESM } from 'ts-jest/presets';
 
 /**
  * @see {@link https://github.com/kulshekhar/ts-jest/issues/1057/}
  */
 const jestConfig: JestConfigWithTsJest = {
-  ...defaults,
+  ...defaultsESM,
   errorOnDeprecated: true,
   injectGlobals: false,
   moduleFileExtensions: [
