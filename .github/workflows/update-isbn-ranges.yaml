@@ -50,22 +50,28 @@ jobs:
       #   env:
       #     ISBN_URL: https://www.isbn-international.org/export_rangemessage.xml
       - if: ${{ success() }}
-        name: Create a pull request
+        name: Commit changes
         # See <https://www.conventionalcommits.org/>.
         # git config user.name "github-actions[bot]"
         # git config user.email "github-actions[bot]@users.noreply.github.com"
-        # `gh pr create` creates a fork if no write permissions.
+        # git config user.name "github-actions"
+        # git config user.email "github-actions@github.com"
         run: |
-          BRANCH="bugfix/update-isbn-ranges-$(date -u "+%Y%m%d%H%M%S")"
-          git config user.name "github-actions"
+          git config user.name "angry-glossy-ibis"
           git config user.email "github-actions@github.com"
           git checkout -b "${BRANCH}"
           git add "src/isbn-ranges/src/isbn-ranges.json"
           git commit -m "fix(isbn-ranges): update ISBN ranges"
           git push -u origin "${BRANCH}"
+        env:
+          BRANCH: bugfix/update-isbn-ranges-$(date -u "+%Y%m%d%H%M%S")
+      - if: ${{ success() }}
+        name: Create a pull request
+        run: |
           gh pr create --base=main --fill
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_ACTIONS_PAT }}
           PR_URL: ${{ github.event.pull_request.html_url }}
       # - name: Build the package
       #   run: |
