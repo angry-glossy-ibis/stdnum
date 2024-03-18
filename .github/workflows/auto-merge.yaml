@@ -1,30 +1,13 @@
-name: Automatically merge pull requests from Dependabot
+name: Automatically merge pull requests
 on:
   pull_request_target:
   workflow_dispatch:
 jobs:
-  dependabot:
+  merge:
     permissions:
       contents: write
       pull-requests: write
     if: ${{ github.actor == 'dependabot[bot]' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fetch metadata
-        uses: dependabot/fetch-metadata@v1
-        # with:
-        #   github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Merge the pull request
-        run: gh pr merge --auto --delete-branch --squash "${PR_URL}"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_URL: ${{ github.event.pull_request.html_url }}
-  xxx:
-    # Copied from above.
-    permissions:
-      contents: write
-      pull-requests: write
-    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - name: Fetch metadata
