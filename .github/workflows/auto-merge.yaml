@@ -1,5 +1,7 @@
 name: Automatically merge pull requests from Dependabot
-on: pull_request_target
+on:
+  pull_request_target:
+  workflow_dispatch:
 jobs:
   dependabot:
     permissions:
