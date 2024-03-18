@@ -59,7 +59,7 @@ jobs:
           BRANCH="bugfix/update-isbn-ranges-$(date -u "+%Y%m%d%H%M%S")"
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git checkout -b "${BRANCH}"
+          git checkout -B "${BRANCH}"
           git add "src/isbn-ranges/src/isbn-ranges.json"
           git commit -m "fix(isbn-ranges): update ISBN ranges"
           git push -u origin "${BRANCH}"
