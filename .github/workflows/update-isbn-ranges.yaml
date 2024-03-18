@@ -69,8 +69,8 @@ jobs:
         run: |
           gh pr create --base=main --fill
         env:
-          # GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_ACTIONS_PAT }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GH_TOKEN: ${{ secrets.GITHUB_ACTIONS_PAT }}
           PR_URL: ${{ github.event.pull_request.html_url }}
       # - name: Build the package
       #   run: |
