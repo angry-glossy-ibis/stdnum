@@ -58,10 +58,9 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git checkout -B bugfix/update-isbn-ranges
+          git checkout -b "bugfix/update-isbn-ranges-$(date -u "+%Y%m%d%H%M%S")"
           git add "src/isbn-ranges/src/isbn-ranges.json"
           git commit -m "fix(isbn-ranges): update ISBN ranges"
-          git pull --rebase origin bugfix/update-isbn-ranges
           git push -u origin bugfix/update-isbn-ranges
           gh pr create --base=main --fill
         env:
