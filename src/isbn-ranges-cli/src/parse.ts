@@ -9,6 +9,7 @@ function parse(xmlData: string): unknown {
       return ![
         'MessageDate',
         'MessageSerialNumber',
+        'MessageSource',
       ].includes(tagName);
     },
   });
