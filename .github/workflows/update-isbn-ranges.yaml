@@ -61,7 +61,7 @@ jobs:
           git checkout -B bugfix/update-isbn-ranges
           git add "src/isbn-ranges/src/isbn-ranges.json"
           git commit -m "fix(isbn-ranges): update ISBN ranges"
-          git pull origin bugfix/update-isbn-ranges
+          git pull origin main
           git push -u origin bugfix/update-isbn-ranges
           gh pr create --base=main --fill
         env:
