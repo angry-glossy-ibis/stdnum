@@ -64,7 +64,7 @@ jobs:
           git commit -m "fix(isbn-ranges): update ISBN ranges"
           git push -u origin "${BRANCH}"
         env:
-          BRANCH: bugfix/update-isbn-ranges-$(date -u "+%Y%m%d%H%M%S")
+          BRANCH: ${{ bugfix/update-isbn-ranges-$(date -u "+%Y%m%d%H%M%S") }}
       - if: ${{ success() }}
         name: Create a pull request
         run: |
