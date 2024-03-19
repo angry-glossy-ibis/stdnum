@@ -9,7 +9,7 @@ jobs:
   merge:
     permissions:
       contents: write
-      pull-requests: read
+      pull-requests: none
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository

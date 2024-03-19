@@ -64,7 +64,7 @@ jobs:
   merge_pull_request:
     permissions:
       contents: write
-      pull-requests: read
+      pull-requests: none
     needs: update_isbn_ranges
     uses: ./.github/workflows/auto-merge.yaml
     with:
