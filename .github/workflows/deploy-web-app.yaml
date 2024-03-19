@@ -1,5 +1,5 @@
 # See <https://github.com/actions/starter-workflows/blob/main/pages/nextjs.yml>.
-# See <https://nextjs.org/docs/pages/building-your-application/deploying/ci-build-caching>.
+# See <https://nextjs.org/docs/pages/building-your-application/deploying/ci-build-caching#github-actions>.
 name: Deploy the Next.js app to GitHub Pages
 on:
   push:
