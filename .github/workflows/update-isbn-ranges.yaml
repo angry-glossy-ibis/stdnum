@@ -62,9 +62,9 @@ jobs:
   # Most events triggered by `GITHUB_TOKEN` won't create a new workflow run,
   # so we merge the PR here.
   merge_pull_request:
-    # permissions:
-    #   contents: write
-    #   pull-requests: read
+    permissions:
+      contents: write
+      pull-requests: read
     needs: update_isbn_ranges
     uses: ./.github/workflows/auto-merge.yaml
     with:
