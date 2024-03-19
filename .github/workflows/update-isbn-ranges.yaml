@@ -6,7 +6,7 @@ on:
 jobs:
   update_isbn_ranges:
     permissions:
-      contents: read
+      contents: write
     runs-on: ubuntu-latest
     outputs:
       branch: ${{ steps.commit_changes.outputs.branch }}
@@ -54,16 +54,16 @@ jobs:
           git commit -m "fix(isbn-ranges): update ISBN ranges"
           git push -u origin "${BRANCH}"
           echo "branch=${BRANCH}" >> "${GITHUB_OUTPUT}"
-  # create_pull_request:
-  #   # permissions:
-  #   #   pull-requests: write
-  #   needs: update_isbn_ranges
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Create a pull request
-  #       run: gh pr create --base=main --fill
-  #       env:
-  #         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  create_pull_request:
+    permissions:
+      pull-requests: read
+    needs: update_isbn_ranges
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a pull request
+        run: gh pr create --base=main --fill
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # # Most events triggered by `GITHUB_TOKEN` won't create a new workflow run,
   # # so we merge the PR here.
   # merge_pull_request:
