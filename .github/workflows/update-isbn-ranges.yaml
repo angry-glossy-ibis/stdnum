@@ -7,7 +7,7 @@ jobs:
   update_isbn_ranges:
     permissions:
       contents: write
-      pull-requests: read
+      pull-requests: write
     runs-on: ubuntu-latest
     outputs:
       branch: ${{ steps.commit_changes.outputs.branch }}
