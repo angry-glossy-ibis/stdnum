@@ -6,9 +6,8 @@ on:
   workflow_dispatch:
 jobs:
   fetch_metadata:
-    # permissions:
-    #   contents: none
-    #   pull-requests: none
+    permissions:
+      pull-requests: read
     if: ${{ github.actor == 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
@@ -17,9 +16,6 @@ jobs:
         # with:
         #   github-token: ${{ secrets.GITHUB_TOKEN }}
   merge:
-    # permissions:
-    #   contents: none
-    #   pull-requests: none
     needs: fetch_metadata
     uses: ./.github/workflows/auto-merge.yaml
     with:
