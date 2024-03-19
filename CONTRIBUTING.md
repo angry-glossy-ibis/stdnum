@@ -22,9 +22,10 @@
 
 ## Важные ссылки
 
+https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+
 https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
-https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
 
 https://docs.github.com/en/actions/using-workflows/reusing-workflows
 

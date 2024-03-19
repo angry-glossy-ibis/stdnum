@@ -1,7 +1,8 @@
 name: Update ISBN ranges
 on:
-  # schedule:
-  #   - cron: '30 * * * *'
+  schedule:
+    # At 12:30 UTC−12 (`Etc/GMT+12`), or 00:30 `Etc/GMT-12`.
+    - cron: '30 12 * * *'
   workflow_dispatch:
 jobs:
   update_isbn_ranges:
@@ -48,23 +49,22 @@ jobs:
         name: Commit changes
         run: |
           BRANCH="bugfix/update-isbn-ranges-$(date -u "+%Y%m%d%H%M%S")"
+          echo "branch=${BRANCH}" >> "${GITHUB_OUTPUT}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "${BRANCH}"
           git add "${APP_PATH}/src/isbn-ranges.json"
           git commit -m "fix(isbn-ranges): update ISBN ranges"
           git push -u origin "${BRANCH}"
-          echo "branch=${BRANCH}" >> "${GITHUB_OUTPUT}"
       - name: Create a pull request
         run: gh pr create --base=main --fill
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  # Most events triggered by `GITHUB_TOKEN` won't create a new workflow run,
-  # so we merge the PR here.
-  merge_pull_request:
+  # Most events triggered by `GITHUB_TOKEN` won’t create a new workflow run,
+  # so we merge the PR immediately.
+  auto_merge:
     permissions:
       contents: write
-      pull-requests: none
     needs: update_isbn_ranges
     uses: ./.github/workflows/auto-merge.yaml
     with:

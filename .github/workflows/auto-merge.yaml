@@ -1,4 +1,4 @@
-name: Automatically merge pull requests
+name: Automatically merge a pull request
 on:
   workflow_call:
     inputs:
@@ -6,10 +6,9 @@ on:
         required: true
         type: string
 jobs:
-  merge:
+  auto_merge:
     permissions:
       contents: write
-      pull-requests: none
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository

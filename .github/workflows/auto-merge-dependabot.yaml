@@ -1,9 +1,6 @@
 name: Automatically merge pull requests from Dependabot
 on:
   pull_request_target:
-
-  # Temporary!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  workflow_dispatch:
 jobs:
   fetch_metadata:
     permissions:
@@ -15,7 +12,9 @@ jobs:
         uses: dependabot/fetch-metadata@v1
         # with:
         #   github-token: ${{ secrets.GITHUB_TOKEN }}
-  merge:
+  auto_merge:
+    permissions:
+      contents: write
     needs: fetch_metadata
     uses: ./.github/workflows/auto-merge.yaml
     with:
