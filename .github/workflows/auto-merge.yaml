@@ -12,6 +12,8 @@ jobs:
     #   pull-requests: read
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
       - name: Merge the pull request
         run: |
           gh pr merge --auto --delete-branch --squash -- "${PR}"
