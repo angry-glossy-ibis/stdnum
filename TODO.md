@@ -1,3 +1,11 @@
+Стереть начинку?
+src/isbn-ranges/src/isbn_ranges.json
+
+
+NODE NOT SPECIFIED (если нет поля engine)
+https://img.shields.io/node/v/stream-shift?label=Node.js&logo=nodedotjs
+
+
 - Разделить ISBN в тестах на валидные и невалидные. Убрать комменты справа.
 
 
@@ -7,7 +15,6 @@
 #
 
 - всё-таки ввести ^ в версии
-- может, кеш в `.github/workflows/deploy-web-app.yaml` будет глобальным, а не `next`?
 - `src/web-app/next.config.js` вообще учитывается? или его затирает `static_site_generator`?
 
 ##
@@ -25,6 +32,8 @@ edition of ISO 2108 (ISO 2108:2005).
     Если 979, то НЕЛЬЗЯ. https://www.isbn-international.org/content/changes-united-states-isbn-prefixes
     Если 978, то удаляем 978, пересчитываем контрольную сумму.
 
+
+
 --as-13
     Если ISBN-10, то добавляем 978, пересчитываем контрольную сумму.
     
@@ -36,9 +45,3 @@ edition of ISO 2108 (ISO 2108:2005).
 
 Спросить разрешения на использование range messages:
 https://www.isbn-international.org/content/terms-and-conditions/6
-
-
-## Хаки
-
-extends - не массив!
-  "extends": "./src/tsconfig.json",

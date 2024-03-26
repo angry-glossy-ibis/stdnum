@@ -1,4 +1,4 @@
-import { type PathLike } from 'fs';
+import type { PathLike } from 'fs';
 import { parse } from './parse.js';
 import { read } from './read.js';
 import { write } from './write.js';

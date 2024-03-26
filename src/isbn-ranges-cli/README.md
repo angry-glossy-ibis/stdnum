@@ -16,6 +16,6 @@ npm i @stdnum/isbn-ranges-cli
 ## Usage
 
 ```bash
-wget https://www.isbn-international.org/export_rangemessage.xml
-npx isbn-ranges-cli convert export_rangemessage.xml isbn-ranges.json
+wget -O RangeMessage.xml https://www.isbn-international.org/export_rangemessage.xml
+npx isbn-ranges-cli convert RangeMessage.xml isbn_ranges.json
 ```

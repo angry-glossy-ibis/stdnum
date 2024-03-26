@@ -6,15 +6,15 @@
 !/*.js
 !/*.json
 !/*.md
-
-!public/
-!public/**/
-!public/**/.nojekyll
+!/*.ts
 
 !src/
 !src/**/
-!src/**/*.css
-!src/**/*.tsx
+!src/**/*.ts
+
+!tests/
+!tests/**/
+!tests/**/*.ts
 
 *.d.ts
 node_modules/

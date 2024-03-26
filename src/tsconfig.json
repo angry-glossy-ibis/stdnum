@@ -1,8 +1,18 @@
 {
   // "$schema": "https://json.schemastore.org/tsconfig",
+  "include": [
+    "*.ts"
+  ],
   "compilerOptions": {
+    "isolatedModules": true,
+    // "importsNotUsedAsValues": "error", // Deprecated
+    // Все пути только в папках пакетов!
+    // "declarationDir": "bin/types",
+    // "noEmit": true,
     //   // "declarationDir": "./dist/types/",
     // OK. 3
+    // "module": "NodeNext",
+    // "moduleResolution": "NodeNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
@@ -28,11 +38,10 @@
     // ,isolatedModules,preserveSymlinks and verbatimModuleSyntax
     // ?
     // "isolatedModules": true,
-    // "verbatimModuleSyntax": true,
-    "composite": true,
+    "verbatimModuleSyntax": true,
+    "composite": false,
     "declaration": true,
     // Обдумать
-    // "declaration": true,
     // "declarationMap": true,
     "downlevelIteration": true,
     // "emitDeclarationOnly": false,
@@ -44,7 +53,6 @@
     // ,,,,,,importHelpers,,,,,,,noEmitHelpers,,,,,,,,
     // tsBuildInfoFile
     "target": "ES6",
-    // esModuleInterop for Jest?
     "esModuleInterop": true,
     // Для Next.js?
     "skipLibCheck": true
@@ -54,6 +62,5 @@
   // Emit: importHelpers,  sourceRoot
   // Interop Constraints OK, but preserveSymlinks
   // baseUrl is AMD
-  // skipLibCheck is recommended
   // "allowSyntheticDefaultImports": false
 }

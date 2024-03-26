@@ -14,26 +14,28 @@
     "name": "Sergei Karavaev",
     "url": "https://github.com/edukisto/"
   },
-  "files": [],
-  "main": "",
+  "files": [
+    "bin/**/*.d.ts",
+    "bin/index.js.map"
+  ],
+  "main": "bin/index.js",
+  "bin": {
+    "stdnum": "bin/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/stdnum/stdnum.git"
   },
   "scripts": {
-    "build": "",
-    "test": ""
-  },
-  "dependencies": {
-    "commander": "^12.0.0"
-  },
-  "devDependencies": {
-    "@commander-js/extra-typings": "^12.0.1"
+    "build": "NODE_OPTIONS=\"--import=./register.js\" webpack --node-env=production --progress",
+    "test": "NODE_OPTIONS=\"--import=./register.js\" webpack configtest",
+    "watch": "NODE_OPTIONS=\"--import=./register.js\" webpack --node-env=development --watch"
   },
   "private": false,
   "publishConfig": {
     "access": "public",
     "provenance": true
   },
-  "type": "module"
+  "type": "module",
+  "types": "bin/index.d.ts"
 }

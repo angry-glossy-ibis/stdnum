@@ -1,9 +1,9 @@
-import type { CheckDigit10 } from './types/check-digit-10.js';
+import type { CheckDigit10 } from './types/check_digit_10.js';
 
 /**
  * Calculates the check digit for a 10-digit ISBN.
  */
-function CalculateCheckDigit10(isbn: string): CheckDigit10 {
+function calculateCheckDigit10(isbn: string): CheckDigit10 {
   const divisor = 11;
   // const { length } = isbn;
   const length = isbn.length;
@@ -18,5 +18,5 @@ function CalculateCheckDigit10(isbn: string): CheckDigit10 {
 }
 
 export {
-  CalculateCheckDigit10,
+  calculateCheckDigit10,
 };

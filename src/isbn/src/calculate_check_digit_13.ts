@@ -1,9 +1,9 @@
-import type { CheckDigit13 } from './types/check-digit-13.js';
+import type { CheckDigit13 } from './types/check_digit_13.js';
 
 /**
  * Calculates the check digit for a 13-digit ISBN.
  */
-function CalculateCheckDigit13(isbn: string): CheckDigit13 {
+function calculateCheckDigit13(isbn: string): CheckDigit13 {
   const divisor = 10;
   const weight = 3;
   let index = isbn.length - 2;
@@ -25,5 +25,5 @@ function CalculateCheckDigit13(isbn: string): CheckDigit13 {
 // }
 
 export {
-  CalculateCheckDigit13,
+  calculateCheckDigit13,
 };

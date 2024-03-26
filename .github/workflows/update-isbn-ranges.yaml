@@ -60,8 +60,7 @@ jobs:
         run: gh pr create --base=main --fill
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  # Most events triggered by `GITHUB_TOKEN` won’t create a new workflow run,
-  # so we merge the PR immediately.
+  # Most events triggered by `GITHUB_TOKEN` won’t create a new workflow run.
   auto_merge:
     permissions:
       contents: write
@@ -69,3 +68,11 @@ jobs:
     uses: ./.github/workflows/auto-merge.yaml
     with:
       pr: ${{ needs.update_isbn_ranges.outputs.branch }}
+  publish:
+    permissions:
+      contents: write
+    needs: auto_merge
+    uses: ./.github/workflows/publish.yaml
+    with:
+      new_version: patch
+      workspace: src/isbn-ranges-cli

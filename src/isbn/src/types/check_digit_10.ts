@@ -1,4 +1,4 @@
-export type CheckDigit10 = '0' |
+type CheckDigit10 = '0' |
   '1' |
   '2' |
   '3' |
@@ -9,3 +9,7 @@ export type CheckDigit10 = '0' |
   '8' |
   '9' |
   'X';
+
+export type {
+  CheckDigit10,
+};

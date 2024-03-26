@@ -3,6 +3,9 @@ import type { Configuration } from 'webpack';
 
 const config: Configuration = {
   extends: resolve('..', 'webpack.config.ts'),
+  externals: [
+    '@stdnum/isbn-ranges',
+  ],
 };
 
 export default (

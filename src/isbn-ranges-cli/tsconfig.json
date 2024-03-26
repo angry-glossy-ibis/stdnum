@@ -1,14 +1,11 @@
 {
   "compilerOptions": {
-    "composite": false,
-    "outDir": "./bin/"
+    "outDir": "bin"
   },
-  "exclude": [
-    "src/**/*.d.ts"
-  ],
-  "extends": "../../tsconfig.base.json",
+  "extends": "../tsconfig.json",
   "include": [
-    "package.json",
-    "src/**/*.ts"
+    "*.ts",
+    "src/**/*.ts",
+    "tests/**/*.ts"
   ]
 }

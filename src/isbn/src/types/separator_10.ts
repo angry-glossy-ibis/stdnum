@@ -1,1 +1,5 @@
-export type Separator10 = '' | ' ' | '-';
+type Separator10 = '' | ' ' | '-';
+
+export type {
+  Separator10,
+};

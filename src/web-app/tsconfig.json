@@ -30,12 +30,12 @@
   "exclude": [
     "node_modules"
   ],
-  "extends": "../../tsconfig.base.json",
+  "extends": "../tsconfig.json",
   "include": [
     ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
     "next-env.d.ts",
-    "out/types/**/*.ts"
+    "out/types/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }

@@ -12,5 +12,10 @@
 !src/**/
 !src/**/*.ts
 
+!tests/
+!tests/**/
+!tests/**/*.ts
+!tests/**/*.xml
+
 *.d.ts
 node_modules/
